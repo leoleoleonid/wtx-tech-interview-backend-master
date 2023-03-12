@@ -37,8 +37,11 @@ $ npm run start:prod
 
 ## Docker
 ```bash
-# watch and detached mode + rebuild for npm changes
+# watch and detached mode + rebuild if npm changes (requires to have node_modules installed locally)
 $ docker-compose up -d --build -V
+
+# build production image and run prod version locally
+$docker-compose -f docker-compose.prod.yml up --build
 ```
 
 # Seeds

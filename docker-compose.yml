@@ -5,7 +5,8 @@ services:
         dockerfile: Dockerfile
         context: .
         target: development
-    command: npm run start:debug
+#    command: npm run start:inspect
+    command: npm run start:dev
     env_file:
       - .env
     environment:
@@ -14,15 +15,17 @@ services:
       - .:/usr/src/
       - /usr/app/node_modules
     ports:
-      - 3000:3000
+      - ${SERVER_PORT}:${SERVER_PORT}
       - 9229:9229
     depends_on:
       - db
   db:
     image: postgres:14
     restart: always
-    env_file:
-      - .env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - 5432:5432
     volumes:
