@@ -37,8 +37,8 @@ $ npm run start:prod
 
 ## Docker
 ```bash
-# watch and detached mode
-$ docker-compose up -d
+# watch and detached mode + rebuild for npm changes
+$ docker-compose up -d --build -V
 ```
 
 # Seeds
