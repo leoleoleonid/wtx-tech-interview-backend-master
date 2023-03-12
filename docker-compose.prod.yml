@@ -1,0 +1,14 @@
+
+services:
+  backend-prod:
+    build:
+        dockerfile: Dockerfile
+        context: .
+        target: production
+    command: npm run start:prod
+    env_file:
+      - .env
+    environment:
+      POSTGRES_HOST: db
+    ports:
+      - 3000:3000
