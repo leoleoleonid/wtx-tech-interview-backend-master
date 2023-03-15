@@ -1,9 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FindOneOptions, Repository } from 'typeorm';
-import { TruckScore } from '../truck-score/truck-score.entity';
+import { TruckScore } from './truck-score.entity';
 import { TruckScoreByIdDto } from './dtos/get-truck-score.dto';
-import { Truck } from 'src/truck/truck.entity';
+import { Truck } from 'src/__old/truck/truck.entity';
 
 @Injectable()
 export class TruckScoreService {

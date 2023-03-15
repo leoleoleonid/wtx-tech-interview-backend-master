@@ -15,10 +15,10 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/ (GET)', () => {
+  it('/test (GET)', () => {
     return request(app.getHttpServer())
-      .get('/')
+      .get('/test')
       .expect(404)
-      .expect({ statusCode: 404, message: 'Cannot GET /', error: 'Not Found' });
+      .expect({ statusCode: 404, message: 'Cannot GET /test', error: 'Not Found' });
   });
 });

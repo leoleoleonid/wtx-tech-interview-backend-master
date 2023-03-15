@@ -2,8 +2,12 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CommandModule } from 'nestjs-command';
-import { TruckScoreModule } from './truck-score/truck-score.module';
-import { TruckModule } from './truck/truck.module';
+import { TruckScoreModule } from './__old/truck-score/truck-score.module';
+import { TruckModule } from './__old/truck/truck.module';
+import { EnvironmentConfigModule } from './infrastructure/config/environment-config/environment-config.module';
+import { TypeormModule } from './infrastructure/config/typeorm/typeorm.module';
+import { LoggerModule } from './infrastructure/logger/logger.module';
+import { ExceptionsModule } from './infrastructure/exceptions/exceptions.module';
 
 @Module({
   imports: [
@@ -21,6 +25,10 @@ import { TruckModule } from './truck/truck.module';
     TruckModule,
     TruckScoreModule,
     CommandModule,
+    EnvironmentConfigModule,
+    TypeormModule,
+    LoggerModule,
+    ExceptionsModule,
   ],
 })
 export class AppModule {}

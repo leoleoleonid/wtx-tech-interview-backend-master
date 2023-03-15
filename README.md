@@ -46,7 +46,7 @@ $docker-compose -f docker-compose.prod.yml up --build
 
 # Seeds
 
-In order to facilitate the project development there are seeds already developed for both [Trucks](src/truck/truck.entity.ts) and [TruckScores](src/truck-score/truck-score.entity.ts) entities.
+In order to facilitate the project development there are seeds already developed for both [Trucks](src/__old/truck/truck.entity.ts) and [TruckScores](src/__old/truck-score/truck-score.entity.ts) entities.
 
 ```bash
 # run the seeds in order to populate the database

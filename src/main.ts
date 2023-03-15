@@ -11,7 +11,7 @@ async function bootstrap() {
       transform: true,
     }),
   );
-
+  // TODO to config
   await app.listen(3000);
 }
 

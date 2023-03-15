@@ -1,5 +1,5 @@
-import { LocationEnum, Truck } from 'src/truck/truck.entity';
-import { TruckScore } from '../../truck-score/truck-score.entity';
+import { LocationEnum, Truck } from 'src/__old/truck/truck.entity';
+import { TruckScore } from '../../src/__old/truck-score/truck-score.entity';
 import { define, factory } from 'typeorm-seeding';
 
 const TRUCK_BRANDS = ['Mercedes-benz', 'Volvo', 'Scania'];

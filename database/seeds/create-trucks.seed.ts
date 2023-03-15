@@ -1,6 +1,6 @@
 import { Factory, Seeder } from 'typeorm-seeding';
-import { Truck } from '../../truck/truck.entity';
-import { TruckScore } from '../../truck-score/truck-score.entity';
+import { Truck } from '../../src/__old/truck/truck.entity';
+import { TruckScore } from '../../src/__old/truck-score/truck-score.entity';
 
 export default class CreateTrucks implements Seeder {
   public async run(factory: Factory): Promise<any> {
