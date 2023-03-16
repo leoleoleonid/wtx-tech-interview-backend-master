@@ -1,6 +1,7 @@
-import { LocationEnum, Truck } from 'src/__old/truck/truck.entity';
-import { TruckScore } from '../../src/__old/truck-score/truck-score.entity';
-import { define, factory } from 'typeorm-seeding';
+import { define } from 'typeorm-seeding';
+import {Truck} from "../../src/infrastructure/entities/truck.entity";
+import {LocationEnum} from "../../src/domain/model/truck";
+
 
 const TRUCK_BRANDS = ['Mercedes-benz', 'Volvo', 'Scania'];
 const LOCATIONS = ['Jordan', 'Lisbon', 'Cologne'];
@@ -22,10 +23,7 @@ define(Truck, () => {
   truck.location = LOCATIONS[
     generateNumberBetween(0, LOCATIONS.length - 1)
   ] as LocationEnum;
-
-  (async () => {
-    truck.score = await factory(TruckScore)().make();
-  })();
+  truck.score = 0;
 
   return truck;
 });
