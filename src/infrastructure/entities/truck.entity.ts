@@ -21,6 +21,6 @@ export class Truck {
   })
   location: LocationEnum;
 
-  @Column()
+  @Column({type: "decimal"})
   score: number;
 }
