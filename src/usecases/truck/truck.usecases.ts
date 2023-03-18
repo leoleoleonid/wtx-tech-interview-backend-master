@@ -2,9 +2,10 @@ import {ILogger, ILOGGER_TOCKEN} from '../../domain/logger/logger.interface';
 import {TRUCK_REPO, TruckRepository} from '../../domain/repositories/track.repository.interface';
 import {LocationEnum, Truck} from "../../domain/model/truck";
 import {
-    TruckTypeAvgPriceService
-} from "../../infrastructure/truck-type-avg-price/truck-type-avg-price.service";
-import {TypeToPrice} from "../../domain/adapters/truck-type-avg-price.service.interface";
+    I_TRUCK_TYPE_AVG_PRICE_SERVICE_TOKEN,
+    ITruckTypeAvgPriceService,
+    TypeToPrice
+} from "../../domain/adapters/truck-type-avg-price.service.interface";
 import {Inject, Injectable} from "@nestjs/common";
 
 @Injectable()
@@ -14,7 +15,8 @@ export class TruckUseCases {
         private readonly logger: ILogger,
         @Inject(TRUCK_REPO)
         private readonly truckRepository: TruckRepository,
-        private readonly avgPriceService: TruckTypeAvgPriceService
+        @Inject(I_TRUCK_TYPE_AVG_PRICE_SERVICE_TOKEN)
+        private readonly avgPriceService: ITruckTypeAvgPriceService
     ) {}
 
     // TODO add pagination
