@@ -10,6 +10,7 @@ import {TypeOrmConfigModule} from "./infrastructure/config/typeorm/typeorm.modul
     imports: [
         ConfigModule.forRoot({
             isGlobal: true,
+            envFilePath: process.env.NODE_ENV === 'test' ? '.env.test' : '.env'
             // TODO add config validation
             // validationSchema: Joi.object({ ... }),
         }),

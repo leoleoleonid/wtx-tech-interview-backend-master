@@ -1,7 +1,7 @@
 export default {
   type: 'postgres',
   host: process.env.DB_HOST || 'localhost',
-  database: 'wtx-challenge2' || process.env.POSTGRES_DB,
+  database: process.env.POSTGRES_DB,
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
   entities: ['dist/src/**/*.entity.js'],
