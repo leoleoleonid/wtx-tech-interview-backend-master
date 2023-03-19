@@ -3,11 +3,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Truck } from '../entities/truck.entity';
 
 import { DatabaseTruckRepository } from './track.repository';
-import { TRUCK_REPO } from "../../domain/repositories/track.repository.interface";
+import { TRUCK_REPOSITORY_TOKEN } from "../../domain/repositories/track.repository.interface";
 
 @Module({
   imports: [TypeOrmModule.forFeature([Truck])],
-  providers: [{provide: TRUCK_REPO, useClass: DatabaseTruckRepository}],
-  exports: [TRUCK_REPO, TypeOrmModule],
+  providers: [{provide: TRUCK_REPOSITORY_TOKEN, useClass: DatabaseTruckRepository}],
+  exports: [TRUCK_REPOSITORY_TOKEN, TypeOrmModule],
 })
 export class RepositoriesModule {}

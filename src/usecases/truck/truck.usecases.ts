@@ -1,5 +1,5 @@
 import {ILogger, ILOGGER_TOCKEN} from '../../domain/logger/logger.interface';
-import {TRUCK_REPO, TruckRepository} from '../../domain/repositories/track.repository.interface';
+import {TRUCK_REPOSITORY_TOKEN, TruckRepository} from '../../domain/repositories/track.repository.interface';
 import {LocationEnum, Truck} from "../../domain/model/truck";
 import {
     I_TRUCK_TYPE_AVG_PRICE_SERVICE_TOKEN,
@@ -14,7 +14,7 @@ export class TruckUseCases {
     constructor(
         @Inject(ILOGGER_TOCKEN)
         private readonly logger: ILogger,
-        @Inject(TRUCK_REPO)
+        @Inject(TRUCK_REPOSITORY_TOKEN)
         private readonly truckRepository: TruckRepository,
         @Inject(I_TRUCK_TYPE_AVG_PRICE_SERVICE_TOKEN)
         private readonly avgPriceService: ITruckTypeAvgPriceService,
