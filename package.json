@@ -27,6 +27,7 @@
     "schema:sync": "npm run typeorm-cli schema:sync"
   },
   "dependencies": {
+    "@nestjs/axios": "^2.0.0",
     "@nestjs/common": "^8.0.0",
     "@nestjs/config": "^2.1.0",
     "@nestjs/core": "^8.0.0",
