@@ -1,10 +1,12 @@
 import {Body, Controller, Get, Param, Patch, Query} from '@nestjs/common';
-// import { ApiExtraModels, ApiResponse, ApiTags } from '@nestjs/swagger';
-// import {UpdateResult} from "typeorm";
 import {TruckUseCases} from "../../../usecases/truck/truck.usecases";
-import {LocationEnum, Truck} from "../../../domain/model/truck";
+import {Truck} from "../../../domain/model/truck";
 import {UpdatePriceDto} from "./dtos/update-price-dto";
-import {TruckScoreByIdDto} from "./dtos/get-truck-score.dto";
+import {LocationDto} from "./dtos/location.query-param.dto";
+import {ApiOkResponse} from "@nestjs/swagger";
+import {TruckPresenter} from "./presenters/truck.presentor";
+
+const TRUCK_PRICE_UPDATED = 'The price has been successfully updated.';
 
 @Controller('trucks')
 export class TruckController {
@@ -12,24 +14,27 @@ export class TruckController {
   constructor(private readonly truckUseCases: TruckUseCases) {}
 
   @Get()
-  async getTrucks(): Promise<Truck[]> {
-    return this.truckUseCases.getTrucks();
+  @ApiOkResponse({type: TruckPresenter, isArray: true})
+  async getTrucks(@Query() queryString: LocationDto): Promise<Truck[]> {
+    return this.truckUseCases.getTrucks(queryString.location);
   }
 
   @Patch(':id')
+  @ApiOkResponse({description: TRUCK_PRICE_UPDATED})
   async updatePrice(
       @Param('id') id: number,
       @Body() body: UpdatePriceDto,
   ): Promise<string> {
     await this.truckUseCases.updatePrice(id, body.price);
-    return 'success'
+    return TRUCK_PRICE_UPDATED
   }
 
   @Get('score/:truckId')
+  @ApiOkResponse({type: TruckPresenter, isArray: false})
   findScoreByTruckId(
       @Param('truckId') truckId: number,
-      @Query() queryString: TruckScoreByIdDto,
+      @Query() queryString: LocationDto,
   ) {
-    return this.truckUseCases.getTruckScore(truckId, queryString.location as LocationEnum);
+    return this.truckUseCases.getTruckScore(truckId, queryString.location);
   }
 }

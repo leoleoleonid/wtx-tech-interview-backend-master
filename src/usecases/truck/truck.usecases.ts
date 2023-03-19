@@ -7,6 +7,7 @@ import {
     TypeToPrice
 } from "../../domain/adapters/truck-type-avg-price.service.interface";
 import {Inject, Injectable} from "@nestjs/common";
+import {I_EXCEPTION_TOKEN, IException} from "../../domain/exceptions/exceptions.interface";
 
 @Injectable()
 export class TruckUseCases {
@@ -16,7 +17,10 @@ export class TruckUseCases {
         @Inject(TRUCK_REPO)
         private readonly truckRepository: TruckRepository,
         @Inject(I_TRUCK_TYPE_AVG_PRICE_SERVICE_TOKEN)
-        private readonly avgPriceService: ITruckTypeAvgPriceService
+        private readonly avgPriceService: ITruckTypeAvgPriceService,
+
+        @Inject(I_EXCEPTION_TOKEN)
+        private readonly exceptionService: IException
     ) {}
 
     // TODO add pagination
@@ -46,6 +50,10 @@ export class TruckUseCases {
     }
 
     async updatePrice(id: number, price: number): Promise<void> {
+        const truck = await this.truckRepository.findById(id);
+        if (!truck) {
+            this.exceptionService.notFoundException(`No truck with id: ${id}`)
+        }
         await this.truckRepository.updatePrice(id, price);
         this.logger.log('updatePrice execute', `Truck ${id} have been updated with price ${price}`);
     }
@@ -61,10 +69,7 @@ export class TruckUseCases {
             await this.truckRepository.updateScore(truck.id, truck.score)
             trucksWithNewScores.push(truck);
         }
-        // request agvPrices csv from service
-        // calculate scores without location
-        // persist scores TO DB
-        // return scores to controller or to command executor
+
         this.logger.log('updateTruckScores UseCase execute', `updated successfully`);
         return trucksWithNewScores;
     }

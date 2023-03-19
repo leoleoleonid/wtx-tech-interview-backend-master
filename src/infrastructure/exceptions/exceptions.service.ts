@@ -4,6 +4,7 @@ import {
   Injectable,
   InternalServerErrorException,
   UnauthorizedException,
+  NotFoundException
 } from '@nestjs/common';
 import { IException, IFormatExceptionMessage } from '../../domain/exceptions/exceptions.interface';
 
@@ -11,6 +12,10 @@ import { IException, IFormatExceptionMessage } from '../../domain/exceptions/exc
 export class ExceptionsService implements IException {
   badRequestException(data: IFormatExceptionMessage): void {
     throw new BadRequestException(data);
+  }
+
+  notFoundException(data:IFormatExceptionMessage | string): void {
+    throw new NotFoundException(data)
   }
   internalServerErrorException(data?: IFormatExceptionMessage): void {
     throw new InternalServerErrorException(data);
