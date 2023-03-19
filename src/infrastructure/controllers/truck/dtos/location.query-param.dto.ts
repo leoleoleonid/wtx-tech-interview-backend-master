@@ -1,10 +1,10 @@
-import { IsOptional, IsString } from 'class-validator';
+import { IsOptional, IsEnum } from 'class-validator';
 import {ApiProperty} from "@nestjs/swagger";
 import {LocationEnum} from "../../../../domain/model/truck";
 
 export class LocationDto {
-  @IsString()
+  @IsEnum(LocationEnum)
   @IsOptional()
-  @ApiProperty({required: false})
+  @ApiProperty({required: false,  enum: LocationEnum})
   location?: LocationEnum;
 }
