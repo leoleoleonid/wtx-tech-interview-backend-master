@@ -110,4 +110,7 @@ TODO
 - create endpoint to receive average price updates
 external service must send update message with avg prices, then scores must be updated. otherwise scores can be unsync
 - fix response formats to support old responses formats
-
+- add healthcheck
+- add unit and e2e tests
+- remove dependencies with security vulnerabilities 
+- add migration
