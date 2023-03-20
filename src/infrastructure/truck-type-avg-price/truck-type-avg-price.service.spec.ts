@@ -56,7 +56,6 @@ describe('TruckTypeAvgPriceService', () => {
 
         (httpServiceMock.axiosRef.get as jest.Mock).mockResolvedValueOnce({data:csv});
         const typeToPrice: TypeToPrice = await service.getTypeToPrice();
-        console.log('!!!', typeToPrice)
         expect(Object.keys(typeToPrice).length).toEqual(Object.keys(expected).length);
         Object.keys(expected).map(key => {
             expect(typeToPrice[key]).toEqual(expected[key]);

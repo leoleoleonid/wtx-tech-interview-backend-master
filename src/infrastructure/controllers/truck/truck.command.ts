@@ -18,7 +18,7 @@ export class TruckCommand {
         describe: 'Update trucks',
     })
     async update() {
-        const trucks: Truck[] = await this.truckUseCases.updateTruckScores();
+        const trucks: Truck[] = await this.truckUseCases.recalculateTruckScores();
         console.log(trucks)
 
 

@@ -75,3 +75,39 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Task description
+
+As a senior engineer, we need you to pair program with a junior engineer to refactor the code in a way that it becomes:
+- **clean and readable** - self describing
+
+Now all business logic contains in src/domain/ and src/usecases/ folders.
+Business logic doesn't depend on our infrastructure.
+Each use-case method describes itself inside its code.
+
+- **testable** - we're not confident making changes to this code. How can we add tests ?
+
+Because we don't depend on our infrastructure, it's easy now to write unit tests for business logic. Infrastructure components are implemented with dependency injection too, so it's easy to mock them for tests.
+
+- **reusable** - are there any opportunities of code reuse ?
+
+Can be easily used for other infrastructure. For example, we can easily add cli command to a controller or use message brokers instead of http or switch from one db to another. all we need to do is to implement an interface.
+
+- **configurable** - what can we leverage from spliting configuration from code ?
+
+standard ConfigModule
+
+- **extendable** - we can easily add/remove factors to the scoring logic
+
+see  src/domain/model/truck.ts
+
+- **observable** - currently it's hard to track and troubleshoot if something goes wrong
+
+Swagger, Exceptions filter and service and Logger were added
+
+
+
+TODO
+- create endpoint to receive average price updates
+external service must send update message with avg prices, then scores must be updated. otherwise scores can be unsync
+- fix response formats to support old responses formats
+

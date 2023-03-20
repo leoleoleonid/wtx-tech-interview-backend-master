@@ -58,11 +58,12 @@ export class TruckUseCases {
         this.logger.log('updatePrice execute', `Truck ${id} have been updated with price ${price}`);
     }
 
-    async updateTruckScores(): Promise<Truck[]> {
+    async recalculateTruckScores(): Promise<Truck[]> {
         const avgPriceByTruckType: TypeToPrice = await this.avgPriceService.getTypeToPrice();
         const trucks : Truck[] = await this.truckRepository.find();
         const trucksWithNewScores : Truck[] = [];
 
+        //recalculate initial scores for all trucks
         //TODO can be optimized
         for await (const truck of trucks) {
             truck.score = truck.recalculateInitialTruckScore(avgPriceByTruckType);

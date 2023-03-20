@@ -158,7 +158,7 @@ describe('TruckUseCases', function () {
             const EXPECTED_SCORE = 1.5;
 
             (truckRepositoryMock.find as jest.Mock).mockResolvedValueOnce([truck]);
-            const trucks: Truck[] = await truckUseCases.updateTruckScores();
+            const trucks: Truck[] = await truckUseCases.recalculateTruckScores();
             const truckWithRecalculatedScore = trucks[0];
             expect(truckWithRecalculatedScore.score).toEqual(EXPECTED_SCORE);
             expect(truckRepositoryMock.updateScore).toHaveBeenCalledWith(truck.id, EXPECTED_SCORE)
@@ -178,7 +178,7 @@ describe('TruckUseCases', function () {
             const EXPECTED_SCORE = 1;
 
             (truckRepositoryMock.find as jest.Mock).mockResolvedValueOnce([truck]);
-            const trucks: Truck[] = await truckUseCases.updateTruckScores();
+            const trucks: Truck[] = await truckUseCases.recalculateTruckScores();
             const truckWithRecalculatedScore = trucks[0];
             expect(truckWithRecalculatedScore.score).toEqual(EXPECTED_SCORE);
             expect(truckRepositoryMock.updateScore).toHaveBeenCalledWith(truck.id, EXPECTED_SCORE)
@@ -200,7 +200,7 @@ describe('TruckUseCases', function () {
             const EXPECTED_SCORE = 1;
 
             (truckRepositoryMock.find as jest.Mock).mockResolvedValueOnce([truck]);
-            const trucks: Truck[] = await truckUseCases.updateTruckScores();
+            const trucks: Truck[] = await truckUseCases.recalculateTruckScores();
             const truckWithRecalculatedScore = trucks[0];
             expect(truckWithRecalculatedScore.score).toEqual(EXPECTED_SCORE);
             expect(truckRepositoryMock.updateScore).toHaveBeenCalledWith(truck.id, EXPECTED_SCORE)
@@ -220,7 +220,7 @@ describe('TruckUseCases', function () {
             const EXPECTED_SCORE = 0.5;
 
             (truckRepositoryMock.find as jest.Mock).mockResolvedValueOnce([truck]);
-            const trucks: Truck[] = await truckUseCases.updateTruckScores();
+            const trucks: Truck[] = await truckUseCases.recalculateTruckScores();
             const truckWithRecalculatedScore = trucks[0];
             expect(truckWithRecalculatedScore.score).toEqual(EXPECTED_SCORE);
             expect(truckRepositoryMock.updateScore).toHaveBeenCalledWith(truck.id, EXPECTED_SCORE)
@@ -243,7 +243,7 @@ describe('TruckUseCases', function () {
             const EXPECTED_SCORE = 1;
 
             (truckRepositoryMock.find as jest.Mock).mockResolvedValueOnce([truck]);
-            const trucks: Truck[] = await truckUseCases.updateTruckScores();
+            const trucks: Truck[] = await truckUseCases.recalculateTruckScores();
             const truckWithRecalculatedScore = trucks[0];
             expect(truckWithRecalculatedScore.score).toEqual(EXPECTED_SCORE);
             expect(truckRepositoryMock.updateScore).toHaveBeenCalledWith(truck.id, EXPECTED_SCORE)
@@ -262,7 +262,7 @@ describe('TruckUseCases', function () {
             const EXPECTED_SCORE = 0.5;
 
             (truckRepositoryMock.find as jest.Mock).mockResolvedValueOnce([truck]);
-            const trucks: Truck[] = await truckUseCases.updateTruckScores();
+            const trucks: Truck[] = await truckUseCases.recalculateTruckScores();
             const truckWithRecalculatedScore = trucks[0];
             expect(truckWithRecalculatedScore.score).toEqual(EXPECTED_SCORE);
             expect(truckRepositoryMock.updateScore).toHaveBeenCalledWith(truck.id, EXPECTED_SCORE)
@@ -283,7 +283,7 @@ describe('TruckUseCases', function () {
             const EXPECTED_SCORE = 0.5;
 
             (truckRepositoryMock.find as jest.Mock).mockResolvedValueOnce([truck]);
-            const trucks: Truck[] = await truckUseCases.updateTruckScores();
+            const trucks: Truck[] = await truckUseCases.recalculateTruckScores();
             const truckWithRecalculatedScore = trucks[0];
             expect(truckWithRecalculatedScore.score).toEqual(EXPECTED_SCORE);
             expect(truckRepositoryMock.updateScore).toHaveBeenCalledWith(truck.id, EXPECTED_SCORE)
@@ -302,7 +302,7 @@ describe('TruckUseCases', function () {
             const EXPECTED_SCORE = 0;
 
             (truckRepositoryMock.find as jest.Mock).mockResolvedValueOnce([truck]);
-            const trucks: Truck[] = await truckUseCases.updateTruckScores();
+            const trucks: Truck[] = await truckUseCases.recalculateTruckScores();
             const truckWithRecalculatedScore = trucks[0];
             expect(truckWithRecalculatedScore.score).toEqual(EXPECTED_SCORE);
             expect(truckRepositoryMock.updateScore).toHaveBeenCalledWith(truck.id, EXPECTED_SCORE)
